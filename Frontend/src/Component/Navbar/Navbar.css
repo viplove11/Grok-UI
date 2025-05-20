@@ -1,0 +1,28 @@
+/* Sticky Navbar */
+.main-navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* or your app background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Logo & Icon */
+  .icon-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .icon-logo .icon {
+    width: 30px;
+  }
+  .icon-logo .logo {
+    width: 150px;
+  }
