@@ -33,7 +33,7 @@ const App = () => {
   }
 
   return (
-    <div className={`main-app ${isInitialState ? 'initial-state' : 'chat-state'}`}>
+    <div className={`main-app ${isInitialState ? 'initial-state' : 'chat-state'} container`}>
       {isInitialState ? (
         <div className="welcome-container">
           <h1 className="welcome-heading">Good afternoon, Gautam.</h1>
