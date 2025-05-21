@@ -1,101 +1,85 @@
-import { useState, useRef, useEffect } from "react";
-import { Camera, Search, BrainCircuit, ArrowUp, ImageIcon, Edit, Newspaper, User, LayoutGrid } from "lucide-react";
-import './QueryComponent.css';
+import React, { useState, useRef, useEffect } from 'react'
+import './QueryComponent.css'
 
-export default function QueryComponent() {
-  const [query, setQuery] = useState('');
-  const [chatHistory, setChatHistory] = useState([]);
-  const [isFirstQuery, setIsFirstQuery] = useState(true);
-  const contentAreaRef = useRef(null);
+const QueryComponent = ({ onSendMessage }) => {
+  const [query, setQuery] = useState('')
+  const inputRef = useRef(null)
+  
+  // Focus input field on component mount
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [])
 
   const handleSubmit = (e) => {
-    if (e) e.preventDefault();
-
+    e.preventDefault()
     if (query.trim()) {
-      setChatHistory([
-        ...chatHistory,
-        { type: 'query', text: query },
-        { type: 'response', text: `This is a sample response to: ${query}` }
-      ]);
-
-      setIsFirstQuery(false);
-      setQuery('');
+      onSendMessage(query.trim())
+      setQuery('')
     }
-  };
+  }
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      handleSubmit();
+    if (e.key === 'Enter' && !e.shiftKey) {
+      handleSubmit(e)
     }
-  };
-
-  useEffect(() => {
-    if (contentAreaRef.current) {
-      contentAreaRef.current.scrollTop = contentAreaRef.current.scrollHeight;
-    }
-  }, [chatHistory]);
+  }
 
   return (
-    <div className="app-container">
-      <div className="content-area" ref={contentAreaRef}>
-        {isFirstQuery && (
-          <div className="greeting">
-            <h1>Good afternoon, Developer.</h1>
-            <p>How can I help you today?</p>
-          </div>
-        )}
-
-        {chatHistory.length > 0 && (
-          <div className="chat-container">
-            {chatHistory.map((item, index) => (
-              <div key={index} className={`chat-bubble ${item.type}`}>
-                <p>{item.type === 'query' ? '🙋 ' : '🤖 '}{item.text}</p>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div className={`input-section ${isFirstQuery ? 'centered' : 'bottom'}`}>
+    <div className="query-component">
+      <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <div className="input-field">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="What do you want to know?"
-            />
-            <button className="send-button" onClick={handleSubmit}>
-              <ArrowUp size={20} />
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="What do you want to know?"
+            className="query-input"
+          />
+          <button 
+            type="submit" 
+            className="send-button"
+            disabled={!query.trim()}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path 
+                fill="currentColor" 
+                d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"
+              />
+            </svg>
+          </button>
+        </div>
+        
+        <div className="input-controls">
+          <div className="left-controls">
+            <button type="button" className="control-btn">
+              <span role="img" aria-label="attachment">📎</span>
+            </button>
+            <button type="button" className="control-btn">
+              <span>DeepSearch</span>
+              <span>▼</span>
+            </button>
+            <button type="button" className="control-btn">
+              <span>Think</span>
             </button>
           </div>
-
-          <div className="feature-buttons">
-            <button className="feature-button">
-              <ImageIcon size={18} />
-              <span>Create Images</span>
-            </button>
-
-            <button className="feature-button">
-              <Edit size={18} />
-              <span>Edit Image</span>
-            </button>
-
-            <button className="feature-button">
-              <Newspaper size={18} />
-              <span>Latest News</span>
-            </button>
-
-            <button className="feature-button">
-              <LayoutGrid size={18} />
-              <span>Workspaces</span>
-              <span className="new-tag">New</span>
+          
+          <div className="right-controls">
+            <div className="model-selector">
+              <span>Grok 3</span>
+              <span>▼</span>
+            </div>
+            <button type="button" className="control-btn">
+              <span>↑</span>
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
-  );
+  )
 }
+
+export default QueryComponent
