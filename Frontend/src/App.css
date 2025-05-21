@@ -7,7 +7,8 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  background-color: rgb(255, 252, 246);
   color: #202123;
 }
 
@@ -39,6 +40,9 @@ body {
   align-items: center;
   width: 100%;
   max-width: 800px;
+  /* border: 1px solid; */
+  gap: 2rem;
+  /* max-height: 100vh!important; */
 }
 
 .welcome-heading {
@@ -50,8 +54,8 @@ body {
 }
 
 .welcome-subheading {
-  font-size: 1.8rem;
-  font-weight: 400;
+  font-size: 3rem;
+  font-weight: bold;
   margin-bottom: 40px;
   text-align: center;
   color: #6e6e80;
@@ -61,12 +65,13 @@ body {
   margin-bottom: 50px;
   width: 90%;
   max-width: 800px;
+  /* border: 1px solid; */
 }
 
 .chat-query {
   width: 100%;
   padding: 16px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   border-top: 1px solid #e5e5e5;
 }
 
@@ -78,12 +83,14 @@ body {
   display: flex;
   flex-direction: column;
   margin: 10px 0px;
+  /* background-color: white; */
+  /* border: 1px solid; */
 }
 
 .feature-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
   margin-top: 20px;
   width: 90%;
@@ -138,20 +145,22 @@ body {
 }
 
 .message-content {
-  padding: 12px 16px;
-  border-radius: 18px;
+  padding: 5px 18px;
+  /* border-radius: 18px; */
+  border-radius: 5px;
   line-height: 1.4;
 }
 
 .user-message .message-content {
-  background-color: #2c64e5;
-  color: white;
+  background-color: white;
+  color:black;
+  border: 1px solid #ffcb5c;
 }
 
 .ai-message .message-content {
-  background-color: #f7f7f8;
-  color: #202123;
-  border: 1px solid #e5e5e5;
+  background-color: white;
+  color:black;
+  border: 1px solid #f7b527;
 }
 
 @keyframes fadeIn {
@@ -181,4 +190,23 @@ body {
 
 .chat-container::-webkit-scrollbar-thumb:hover {
   background-color: #b1b1b1;
+}
+
+/* icon and logo */
+.genai_icon{
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.genai_logo{
+  width: 300px;
+  /* height: 30px; */
+  /* margin-right: 10px; */
+}
+.logo-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  /* border:1px solid #e5e5e5; */
 }

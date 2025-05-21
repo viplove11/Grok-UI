@@ -52,8 +52,32 @@ const QueryComponent = ({ onSendMessage }) => {
             </svg>
           </button>
         </div>
+
+         <div className="feature-buttons">
+                    <button className="feature-btn">
+                     
+                      Create Images
+                    </button>
+                    <button className="feature-btn">
+                      {/* <span className="feature-icon">✏️</span> */}
+                      Edit Image
+                    </button>
+                    <button className="feature-btn">
+                      {/* <span className="feature-icon">📰</span> */}
+                      Latest News
+                    </button>
+                    <button className="feature-btn">
+                      {/* <span className="feature-icon">👤</span> */}
+                      Personas
+                    </button>
+                    <button className="feature-btn">
+                      {/* <span className="feature-icon">🔧</span> */}
+                      Workspaces
+                      <span className="new-tag">New</span>
+                    </button>
+                  </div>
         
-        <div className="input-controls">
+        {/* <div className="input-controls">
           <div className="left-controls">
             <button type="button" className="control-btn">
               <span role="img" aria-label="attachment">📎</span>
@@ -76,7 +100,7 @@ const QueryComponent = ({ onSendMessage }) => {
               <span>↑</span>
             </button>
           </div>
-        </div>
+        </div> */}
       </form>
     </div>
   )
